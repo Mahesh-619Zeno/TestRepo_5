@@ -7,8 +7,8 @@ public class EvenOddChecker {
         System.out.print("Enter an integer: ");
         if (scanner.hasNextInt()) {
             int number = scanner.nextInt();
-            String result = (number % 2 == 0) ? "even" : "odd";
-            System.out.printf("The number %d is %s.%n", number, result);
+            String evenOddStatus = (number % 2 == 0) ? "even" : "odd";
+            System.out.printf("The number %d is %s.%n", number, evenOddStatus);
         } else {
             System.out.println("Invalid input. Please enter a valid integer.");
         }
