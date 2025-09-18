@@ -7,7 +7,7 @@ public class EvenOddChecker {
             System.out.print("Enter an integer: ");
             
             if (scanner.hasNextInt()) {
-                int number = scanner.nextInt();
+                int enteredNumber = scanner.nextInt();
                 String result = checkEvenOdd(number);
                 System.out.printf("The number %d is %s.%n", number, result);
             } else {
