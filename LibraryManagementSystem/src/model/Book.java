@@ -22,7 +22,10 @@ public class Book {
     }
 
     public static Book fromFileString(String line) {
-        String[] parts = line.split(";");
+        String[] parts = line.split(";", -1);
+        if (parts.length < 2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid book data format: " + line);
+        }
         return new Book(parts[0], parts[1]);
     }
 

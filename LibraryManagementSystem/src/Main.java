@@ -33,7 +33,11 @@ public class Main {
                 case "3":
                     System.out.print("Enter title to search: ");
                     String searchTitle = scanner.nextLine();
-                    library.searchBook(searchTitle);
+                    if (searchTitle.trim().isEmpty()) {
+                        System.out.println("Search title cannot be empty.");
+                    } else {
+                        library.searchBook(searchTitle);
+                    }
                     break;
                 case "4":
                     System.out.println("Exiting...");

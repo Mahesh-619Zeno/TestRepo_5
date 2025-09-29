@@ -10,9 +10,12 @@ public class Library {
     private String filePath;
 
     public Library(String filePath) {
-        this.filePath = filePath;
-        this.books = FileManager.loadBooks(filePath);
+    if (filePath == null || filePath.contains("..")) {
+        throw new IllegalArgumentException("Invalid file path provided. Path traversal is not allowed.");
     }
+    this.filePath = filePath;
+    this.books = FileManager.loadBooks(filePath);
+  }
 
     public void addBook(Book book) {
         books.add(book);
