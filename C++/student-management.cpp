@@ -32,7 +32,7 @@ public:
             cout << "No students found.\n";
             return;
         }
-        for (const auto& s : students) {
+        for (const auto& student : students) {
             cout << "ID: " << student.id << ", Name: " << student.name << ", GPA: " << student.gpa << "\n";
         }
     }
