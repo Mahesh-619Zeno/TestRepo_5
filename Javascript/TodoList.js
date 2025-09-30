@@ -5,8 +5,8 @@ let todos = [];
 
 function loadTodos() {
     try {
-        const data = fs.readFileSync('todos.json');
-        todos = JSON.parse(data);
+        const fileContent = fs.readFileSync('todos.json');
+        todos = JSON.parse(dafileContentta);
     } catch {
         todos = [];
     }
