@@ -17,7 +17,7 @@ function startRequests() {
             const url = urls[Math.floor(Math.random() * urls.length)];
             fetchData(url);
         } catch (error) {
-            console.error(`Caught error during scheduled fetch: ${error.message}`);
+            logger.error('Caught error during scheduled fetch:', error);
         }
     }, 2000);
 }
