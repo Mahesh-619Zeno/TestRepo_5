@@ -13,8 +13,12 @@ function fetchData(url) {
 function startRequests() {
     const urls = ['https://example.com/api1', 'https://example.com/api2'];
     setInterval(() => {
-        const url = urls[Math.floor(Math.random() * urls.length)];
-        fetchData(url);
+        try {
+            const url = urls[Math.floor(Math.random() * urls.length)];
+            fetchData(url);
+        } catch (error) {
+            console.error(`Caught error during scheduled fetch: ${error.message}`);
+        }
     }, 2000);
 }
 
