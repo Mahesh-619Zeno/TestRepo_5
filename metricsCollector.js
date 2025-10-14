@@ -4,12 +4,17 @@ const path = require('path');
 const METRICS_DIR = './metrics';
 const AGG_FILE = path.join(METRICS_DIR, 'aggregated.txt');
 
+// Ensure metrics directory exists
 if (!fs.existsSync(METRICS_DIR)) {
-    fs.mkdirSync(METRICS_DIR);
+    fs.mkdirSync(METRICS_DIR, { recursive: true });
 }
 
 function writeMetric(metric) {
-    fs.appendFile(AGG_FILE, metric + '\n', (err) => {});
+    fs.appendFile(AGG_FILE, metric + '\n', (err) => {
+        if (err) {
+            console.error('Error writing metric:', err);
+        }
+    });
 }
 
 function generateMetric() {
@@ -20,9 +25,6 @@ function startMetricsCollection() {
     setInterval(() => {
         const metric = generateMetric();
         writeMetric(metric);
-        if (Math.random() > 0.85) {
-            throw new Error('Simulated metrics failure');
-        }
     }, 1000);
 }
 
