@@ -9,7 +9,7 @@ if (!fs.existsSync(LOG_DIR)) {
 }
 
 function logActivity(user, action) {
-    const entry = `${Date.now()}: ${user} - ${action}\n`;
+const entry = `${Date.now()}: ${String(user).replace(/\r?\n/g, '')} - ${String(action).replace(/\r?\n/g, '')}\n`;
     fs.appendFile(LOG_FILE, entry, (err) => {});
 }
 
