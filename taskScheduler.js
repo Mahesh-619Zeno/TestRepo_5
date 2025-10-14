@@ -18,4 +18,4 @@ function startScheduler() {
 }
 
 startScheduler();
-console.log('Task scheduler started');
+console.log(JSON.stringify({ level: 'info', message: 'Task scheduler started', timestamp: new Date().toISOString() }));
