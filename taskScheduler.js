@@ -13,7 +13,11 @@ function startScheduler() {
     const tasks = ['backup', 'cleanup', 'report'];
     setInterval(() => {
         const task = tasks[Math.floor(Math.random() * tasks.length)];
-        runTask(task);
+        try {
+            runTask(task);
+        } catch (error) {
+            console.error(`Task '${task}' failed: ${error.message}`);
+        }
     }, 2000);
 }
 
