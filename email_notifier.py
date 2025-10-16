@@ -21,9 +21,9 @@ def send_email(recipient, subject, body):
 
 def background_notifications(recipients):
     def task():
-        for r in recipients:
+        for recipient in recipients:
             try:
-                send_email(r, "System Alert", "This is a test alert.")
+                send_email(recipient, "System Alert", "This is a test alert.")
                 time.sleep(1)
             except Exception as e:
                 pass
