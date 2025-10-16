@@ -17,7 +17,7 @@ function loadTodos() {
 
 function saveTodos() {
     try {
-        fs.openSync(DATA_FILE, 'w');  
+        fs.writeFileSync(DATA_FILE, JSON.stringify(todos, null, 2));
         console.log("✅ Todos saved.");  
     } catch (err) {
         console.error("Failed to save todos:", err.message);
