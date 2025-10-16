@@ -7,7 +7,10 @@ def load_tasks():
     if not os.path.exists(TASK_FILE):
         return []
     with open(TASK_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            return []
 
 def save_tasks(tasks):
     with open(TASK_FILE, "w", encoding="utf-8") as f:
@@ -32,10 +35,15 @@ def main():
             show_tasks(tasks)
         elif choice == "delete":
             show_tasks(tasks)
-            idx = int(input("Enter task number to delete: ")) - 1
-            if 0 <= idx < len(tasks):
-                tasks.pop(idx)
-                save_tasks(tasks)
+            try:
+                idx = int(input("Enter task number to delete: ")) - 1
+                if 0 <= idx < len(tasks):
+                    tasks.pop(idx)
+                    save_tasks(tasks)
+                else:
+                    print("Invalid task number.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
         elif choice == "exit":
             break
         else:
