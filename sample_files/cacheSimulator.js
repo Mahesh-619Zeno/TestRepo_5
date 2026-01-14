@@ -12,7 +12,11 @@ function simulateCache() {
     setInterval(() => {
         const key = keys[Math.floor(Math.random() * keys.length)];
         const value = Math.floor(Math.random() * 1000);
+        try {
         storeInCache(key, value);
+        } catch (error) {
+        console.error('Caught a simulated cache error:', error.message);
+        }
     }, 1000);
 }
 
