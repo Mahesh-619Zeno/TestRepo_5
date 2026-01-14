@@ -10,11 +10,15 @@ function runTask(taskName) {
 }
 
 function startScheduler() {
-    const tasks = ['backup', 'cleanup', 'report'];
-    setInterval(() => {
-        const task = tasks[Math.floor(Math.random() * tasks.length)];
-        runTask(task);
-    }, 2000);
+  const tasks = ["backup", "cleanup", "report"];
+  setInterval(() => {
+    const task = tasks[Math.floor(Math.random() * tasks.length)];
+    try {
+      runTask(task);
+    } catch (error) {
+      console.error(`Task '${task}' failed with error: ${error.message}`);
+    }
+  }, 2000);
 }
 
 startScheduler();
