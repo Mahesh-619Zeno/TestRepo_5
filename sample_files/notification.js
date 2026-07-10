@@ -21,7 +21,7 @@ class NotificationService {
         const toast = document.createElement("div");
         toast.className = "toast";
 
-        toast.innerHTML = message;
+        toast.textContent = message;
 
         document.body.appendChild(toast);
 
